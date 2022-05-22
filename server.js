@@ -23,7 +23,7 @@ const requestListener = async (req, res) => {
   req.on('data', (chuck) => {
     body += chuck;
   })
-  if (req.url === '/post' && req.method === 'GET') {
+  if (req.url === '/posts' && req.method === 'GET') {
     const data = await Post.find();
     res.writeHead(200, headers);
     res.write(JSON.stringify({
@@ -31,7 +31,7 @@ const requestListener = async (req, res) => {
       'data': data,
     }));
     res.end();
-  } else if (req.url === '/post' && req.method === 'POST') {
+  } else if (req.url === '/posts' && req.method === 'POST') {
     req.on('end', async () => {
       try {
         const data = JSON.parse(body);
@@ -47,7 +47,7 @@ const requestListener = async (req, res) => {
         errHandle(res, 400);
       }
     })
-  } else if (req.url === '/post' && req.method === 'DELETE') {
+  } else if (req.url === '/posts' && req.method === 'DELETE') {
     const newPost = await Post.deleteMany({});
     res.writeHead(200, headers);
     res.write(JSON.stringify({
@@ -55,7 +55,7 @@ const requestListener = async (req, res) => {
       'data': await Post.find(),
     }));
     res.end();
-  } else if (req.url.startsWith( '/post/' ) && req.method === 'DELETE') {
+  } else if (req.url.startsWith( '/posts/' ) && req.method === 'DELETE') {
     const id = req.url.split('/').pop();
     const newPost = await Post.findByIdAndDelete(id);
     res.writeHead(200, headers);
@@ -64,7 +64,7 @@ const requestListener = async (req, res) => {
       'data': await Post.find(),
     }));
     res.end();
-  } else if (req.url.startsWith( '/post/' ) && req.method === 'PATCH') {
+  } else if (req.url.startsWith( '/posts/' ) && req.method === 'PATCH') {
     req.on('end', async () => {
       try {
         const id = req.url.split('/').pop();
