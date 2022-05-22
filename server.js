@@ -10,7 +10,6 @@ const DB = process.env.DATABASE.replace(
   '<password>',
   process.env.DATABASE_PASSWORD
 )
-console.log(DB);
 mongoose.connect(DB)
   .then(() => {
     console.log('連接成功');
@@ -91,4 +90,4 @@ const requestListener = async (req, res) => {
 }
 
 const server = http.createServer(requestListener);
-server.listen(3005);
+server.listen(process.env.PORT);
