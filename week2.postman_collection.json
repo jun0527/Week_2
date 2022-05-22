@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "96fd0d08-58bc-4e64-8c51-27bbb7b19f60",
+		"name": "week2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "新增一筆貼文",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"XXX\",\r\n    \"content\": \"今天天氣很好\",\r\n    \"image\": \"\",\r\n    \"likes\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fast-sands-55061.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"fast-sands-55061",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除全部貼文",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://fast-sands-55061.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"fast-sands-55061",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得全部貼文",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fast-sands-55061.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"fast-sands-55061",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除一筆貼文",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://fast-sands-55061.herokuapp.com/posts/6289fe803325afbfb39d8cab",
+					"protocol": "https",
+					"host": [
+						"fast-sands-55061",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"6289fe803325afbfb39d8cab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "編輯一筆貼文",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"修改了3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fast-sands-55061.herokuapp.com/posts/6289fec93325afbfb39d8cb8",
+					"protocol": "https",
+					"host": [
+						"fast-sands-55061",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"6289fec93325afbfb39d8cb8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
