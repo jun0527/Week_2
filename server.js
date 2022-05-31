@@ -73,7 +73,9 @@ const requestListener = async (req, res) => {
       try {
         const id = req.url.split('/').pop();
         const data = JSON.parse(body);
-        const newPost = await Post.findByIdAndUpdate(id, data);
+        const newPost = await Post.findByIdAndUpdate(id, data, {
+          runValidators: true
+        });
         if (newPost === null) {
           errHandle(res, 400);
         } else {
