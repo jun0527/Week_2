@@ -58,24 +58,32 @@ const requestListener = async (req, res) => {
   } else if (req.url.startsWith( '/posts/' ) && req.method === 'DELETE') {
     const id = req.url.split('/').pop();
     const newPost = await Post.findByIdAndDelete(id);
+    if (newPost === null) {
+      errHandle(res, 400);
+    } else {
     res.writeHead(200, headers);
     res.write(JSON.stringify({
       'status': 'success',
       'data': await Post.find(),
     }));
     res.end();
+    }
   } else if (req.url.startsWith( '/posts/' ) && req.method === 'PATCH') {
     req.on('end', async () => {
       try {
         const id = req.url.split('/').pop();
         const data = JSON.parse(body);
         const newPost = await Post.findByIdAndUpdate(id, data);
-        res.writeHead(200, headers);
-        res.write(JSON.stringify({
-          'status': 'success',
-          'data': await Post.find(),
-        }));
-        res.end();
+        if (newPost === null) {
+          errHandle(res, 400);
+        } else {
+          res.writeHead(200, headers);
+          res.write(JSON.stringify({
+            'status': 'success',
+            'data': await Post.find(),
+          }));
+          res.end();
+        }
       } catch(err) {
         console.log(err);
         errHandle(res, 400);
